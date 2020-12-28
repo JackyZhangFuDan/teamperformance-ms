@@ -1,0 +1,13 @@
+2020-12-28 10:12:39,146 INFO [main] [com.autobusi.team.TeamperformanceMsApplicationTests] [StartupInfoLogger.java:55] Starting TeamperformanceMsApplicationTests on W-PF21A4QQ with PID 25264 (started by I042102 in C:\Users\I042102\git\teamperformance-ms)
+2020-12-28 10:12:39,150 DEBUG [main] [com.autobusi.team.TeamperformanceMsApplicationTests] [StartupInfoLogger.java:56] Running with Spring Boot v2.3.5.RELEASE, Spring v5.2.10.RELEASE
+2020-12-28 10:12:39,152 INFO [main] [com.autobusi.team.TeamperformanceMsApplicationTests] [SpringApplication.java:651] No active profile set, falling back to default profiles: default
+2020-12-28 11:09:24,649 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:55] Starting TeamperformanceMsApplication on W-PF21A4QQ with PID 8204 (C:\Users\I042102\git\teamperformance-ms\target\classes started by I042102 in C:\Users\I042102\git\teamperformance-ms)
+2020-12-28 11:09:24,652 DEBUG [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:56] Running with Spring Boot v2.3.5.RELEASE, Spring v5.2.10.RELEASE
+2020-12-28 11:09:24,653 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [SpringApplication.java:651] No active profile set, falling back to default profiles: default
+2020-12-28 11:09:27,270 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:61] Started TeamperformanceMsApplication in 2.831 seconds (JVM running for 4.011)
+2020-12-28 11:13:34,897 ERROR [http-nio-8080-exec-1] [com.autobusi.team.controller.FormService] [FormService.java:74] can't find form with key dac41294-8051-41c9-a512-e7ef739c5a2c
+2020-12-28 14:57:10,863 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:55] Starting TeamperformanceMsApplication on W-PF21A4QQ with PID 26840 (C:\Users\I042102\git\teamperformance-ms\target\classes started by I042102 in C:\Users\I042102\git\teamperformance-ms)
+2020-12-28 14:57:10,869 DEBUG [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:56] Running with Spring Boot v2.3.5.RELEASE, Spring v5.2.10.RELEASE
+2020-12-28 14:57:10,870 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [SpringApplication.java:651] No active profile set, falling back to default profiles: default
+2020-12-28 14:57:17,852 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:61] Started TeamperformanceMsApplication in 7.455 seconds (JVM running for 9.901)
+2020-12-28 14:59:35,376 ERROR [http-nio-8080-exec-1] [com.autobusi.team.controller.FormService] [FormService.java:74] can't find form with key 57fd4029-c844-4217-a928-a147f3f71224

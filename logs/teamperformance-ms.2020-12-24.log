@@ -1,0 +1,4 @@
+2020-12-24 09:58:13,790 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:55] Starting TeamperformanceMsApplication on W-PF21A4QQ with PID 25924 (C:\Users\I042102\git\teamperformance-ms\target\classes started by I042102 in C:\Users\I042102\git\teamperformance-ms)
+2020-12-24 09:58:13,793 DEBUG [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:56] Running with Spring Boot v2.3.5.RELEASE, Spring v5.2.10.RELEASE
+2020-12-24 09:58:13,793 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [SpringApplication.java:651] No active profile set, falling back to default profiles: default
+2020-12-24 09:58:16,458 INFO [main] [com.autobusi.team.TeamperformanceMsApplication] [StartupInfoLogger.java:61] Started TeamperformanceMsApplication in 2.875 seconds (JVM running for 3.74)
