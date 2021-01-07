@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
+import javax.persistence.Tuple;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.autobusi.team.dto.Comment;
 import com.autobusi.team.dto.FormDetail;
 import com.autobusi.team.dto.FormHeader;
+import com.autobusi.team.dto.MyRating;
 import com.autobusi.team.dto.Rating;
+import com.autobusi.team.dto.RatingAverage;
 import com.autobusi.team.model.CommentRep;
 import com.autobusi.team.model.FeedbackForm;
 import com.autobusi.team.model.FeedbackFormRep;
 import com.autobusi.team.model.RatingRep;
+import com.autobusi.team.model.TeamMember;
 import com.autobusi.team.model.TeamMemberRep;
 
 
@@ -75,6 +81,42 @@ public class FormService {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(fd);
+	}
+	//read single member's ratings
+	@GetMapping("/myrating/{memberKey}")
+	private ResponseEntity<MyRating> getMyRating(@PathVariable String memberKey){
+		if(memberKey == null || memberKey.isEmpty()){
+			return ResponseEntity.badRequest().body(null);
+		}
+		
+		MyRating mr = new MyRating();
+		if(mr.init(memberKey, 2020, formRep, memberRep, ratingRep, commentRep)){
+			return ResponseEntity.ok().body(mr);
+		}else{
+			this.logger.error("can't find ratings for memeber with key " + memberKey);
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	//read average rating of a role in a year
+	@GetMapping("/ratingaverage/{role}-{year}")
+	private ResponseEntity<List<RatingAverage>> getAverageRoleRating(@PathVariable String role, @PathVariable Integer year){
+		List<Tuple> ras = this.ratingRep.calcRatingAverageForRole(role, year);
+		if(ras == null || ras.isEmpty()){
+			this.logger.error("error when calculate role's average rating");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}else{
+			List<RatingAverage> result = new ArrayList();
+			ras.forEach(rat -> {
+				RatingAverage ra = new RatingAverage();
+				ra.setYear((Integer)rat.get("year"));
+				ra.setRole((String)rat.get("role"));
+				ra.setItem((String)rat.get("item"));
+				ra.setAverage((Double)rat.get("average"));
+				result.add(ra);
+			});
+			return ResponseEntity.ok().body(result);
+		}
 	}
 	
 	@PutMapping("/bookform/{formid}")
@@ -181,7 +223,13 @@ public class FormService {
 			return ResponseEntity.badRequest().body(msg);
 		}
 		
-		com.autobusi.team.model.Comment cmDb = new com.autobusi.team.model.Comment();
+		List<com.autobusi.team.model.Comment> existedCms = this.commentRep.findAllByFormKeyAndMemberAndMemberRole(formkey, cm.getEmployeeId(), cm.getRole());
+		com.autobusi.team.model.Comment cmDb = null;
+		if(existedCms == null || existedCms.isEmpty())
+			cmDb = new com.autobusi.team.model.Comment();
+		else
+			cmDb = existedCms.get(0);
+		
 		cmDb.setFormKey(formkey);
 		cmDb.setMember(cm.getEmployeeId());
 		cmDb.setMemberRole(cm.getRole());

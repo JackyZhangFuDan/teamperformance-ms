@@ -16,6 +16,9 @@ public class TeamMember {
 	@Column(name="name")
 	private String name;
 	
+	@Column(name="key")
+	private String key;
+	
 	@Column(name="active")
 	private Integer active;
 
@@ -50,6 +53,13 @@ public class TeamMember {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
-	
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
 	
 }
